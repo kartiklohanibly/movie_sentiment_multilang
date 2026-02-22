@@ -1,15 +1,13 @@
 import streamlit as st
 import pickle
-import numpy as np
 
-# Page config
 st.set_page_config(page_title="Movie Sentiment Analysis", page_icon="🎬")
 
 st.title("🎬 Movie Review Sentiment Analyzer")
 
 @st.cache_resource
 def load_model():
-    with open("8706f98c-344a-468e-ab40-cc6bb057d32a.pkl", "rb") as file:
+    with open("model.pkl", "rb") as file:
         model = pickle.load(file)
     return model
 
