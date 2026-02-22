@@ -18,8 +18,5 @@ if st.button("Analyze Sentiment"):
         st.warning("Please enter some text.")
     else:
         result = classifier(review)
-        sentiment = result[0]["label"]
-        confidence = result[0]["score"]
-
-        st.success(f"Sentiment: {sentiment}")
-        st.info(f"Confidence: {confidence:.4f}")
+        st.success(f"Sentiment: {result[0]['label']}")
+        st.info(f"Confidence: {result[0]['score']:.4f}")
