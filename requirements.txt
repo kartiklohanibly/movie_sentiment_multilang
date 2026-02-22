@@ -2,3 +2,9 @@ tensorflow>=2.13,<2.18
 numpy>=1.24
 matplotlib>=3.7
 streamlit>=1.28
+streamlit
+transformers
+torch
+pandas
+numpy
+scikit-learn
