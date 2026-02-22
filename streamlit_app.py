@@ -1,5 +1,7 @@
 import streamlit as st
 import pickle
+st.title("Test Deployment")
+st.success("If you see this, environment works.")
 
 st.set_page_config(page_title="Movie Sentiment Analysis", page_icon="🎬")
 
