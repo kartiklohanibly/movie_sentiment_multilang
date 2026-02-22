@@ -1,13 +1,34 @@
 import re
 import nltk
 from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
 
-nltk.download('stopwords')
+# Download required NLTK data safely
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
 
-def clean_text(text):
-    ps = PorterStemmer()
-    text = re.sub('[^a-zA-Z]', ' ', text)
-    text = text.lower().split()
-    text = [ps.stem(word) for word in text if word not in stopwords.words('english')]
-    return ' '.join(text)
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
+stop_words = set(stopwords.words('english'))
+
+def clean_text(text: str) -> str:
+    """
+    Cleans input text by:
+    - Lowercasing
+    - Removing special characters
+    - Tokenizing
+    - Removing stopwords
+    """
+
+    text = text.lower()
+    text = re.sub(r'[^a-zA-Z\s]', '', text)
+
+    tokens = word_tokenize(text)
+    filtered_tokens = [word for word in tokens if word not in stop_words]
+
+    return " ".join(filtered_tokens)
